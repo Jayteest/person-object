@@ -1,7 +1,7 @@
 # !/usr/bin/env python3
 
 # Name: Jacob St Lawrence
-# Date: September 13, 2023
+# Date: September 25, 2023
 
 # Description:
 # This file contains the Person class. Each object of this class will
@@ -13,7 +13,8 @@
 # import datetime
 # class Person
 # init:
-#   set first name, middle initial, last name, and dob to default strings
+#   set first name, middle initial, last name, and dob to passed
+#   arguments, or None if no argument passed
 # sets for first name, middle initial, last name:
 #   accept argument value, set attribute to argument value
 # set dob (m, d, y):
@@ -23,19 +24,21 @@
 # get full name:
 #   concatenate '{first name} {middle initial} {last name}'
 #   return full name
+# repr: return formatted string
 
-# import the datetime class for assistane with setting DOB
+
+# import the datetime class for assistance with setting DOB
 import datetime
 
 # declare Person class
 class Person:
     # initializer method to initialize object's data attributes
-    def __init__(self):
+    def __init__(self, first=None, middle=None, last=None, dob=None):
         # set each attribute to corresponding passed argument
-        self.__first = 'first'
-        self.__middle = 'middle'
-        self.__last = 'last'
-        self.__dob = 'dob'
+        self.__first = first
+        self.__middle = middle
+        self.__last = last
+        self.__dob = dob
 
     # set method to allow user to set first name
     def set_first(self, first):
@@ -77,3 +80,9 @@ class Person:
         full = f'{self.__first} {self.__middle} {self.__last}'
         # return concatenated string
         return full
+
+    # repr method to return human readable representation of object
+    def __repr__(self):
+        return (f'Full Name: {self.get_full()}\nFirst Name: {self.__first}\n'
+                f'Middle Initial: {self.__middle}\nLast Name: {self.__last}\n'
+                f'DOB: {self.__dob}')
